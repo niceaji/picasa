@@ -38,6 +38,8 @@ function getAlbums (accessToken, options, callback) {
 
   options = options || {}
 
+  Object.assign(accessTokenParams, options);
+
   const requestQuery = querystring.stringify(accessTokenParams)
 
   const requestOptions = {
@@ -143,7 +145,7 @@ function getPhotos (accessToken, options, callback) {
 
   options = options || {}
 
-  if (options.maxResults) accessTokenParams['max-results'] = options.maxResults
+  Object.assign(accessTokenParams, options);
 
   const albumPart = options.albumId ? `/albumid/${options.albumId}` : ''
 
